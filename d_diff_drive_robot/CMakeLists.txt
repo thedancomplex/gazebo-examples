@@ -57,7 +57,7 @@ link_directories(${GAZEBO_LIBRARY_DIRS})
 
 # compile plugin
 add_library(model_diff_drive SHARED model_diff_drive.cc)
-target_link_libraries(model_diff_drive ${GAZEBO_LIBRARIES})
+target_link_libraries(model_diff_drive ${GAZEBO_LIBRARIES} ach)
 
 add_executable(video_listener video_listener.cc)
 target_link_libraries(video_listener ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES} ${PROTOBUF_LIBRARIES} pthread ach)

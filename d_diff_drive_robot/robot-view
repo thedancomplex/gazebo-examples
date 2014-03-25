@@ -37,6 +37,7 @@ ln -s $ROBOT_PATH_MAIN ~/.gazebo/models/d_diff_drive_robot
 
 
 ROBOT_VIEW_VID_CHAN='robot-vid-chan'
+ROBOT_DIFF_DRIVE_CHAN='robot-diff-drive'
 ROBOT_VIEW_CLIENT_FILE='robot-view-client.py'
 
 ROBOT_REMOTE_ADDRESS='0.0.0.0'
@@ -56,6 +57,7 @@ trim()
 MakeAch()
 {
 	ach -1 -C $ROBOT_VIEW_VID_CHAN -m 30 -n 3000000
+	ach -1 -C $ROBOT_DIFF_DRIVE_CHAN -m 30 -n 30000
         sudo chmod 777 /dev/shm/achshm-*
 }
 
