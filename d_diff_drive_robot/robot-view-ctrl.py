@@ -76,7 +76,8 @@ while True:
     [status, framesize] = v.get(vid, wait=False, last=True)
     if status == ach.ACH_OK or status == ach.ACH_MISSED_FRAME or status == ach.ACH_STALE_FRAMES:
         vid2 = cv2.resize(vid,(nx,ny))
-        cv2.imshow("w2", vid2)
+        img = cv2.cvtColor(vid2,cv2.COLOR_BGR2RGB)
+        cv2.imshow("wctrl", img)
         cv2.waitKey(10)
     else:
         raise ach.AchException( v.result_string(status) )
