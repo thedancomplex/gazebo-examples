@@ -70,7 +70,12 @@ void cb(ConstImageStampedPtr &_msg)
 
 
  // printf("%i - %i - w: %i - h: %i - format %i \n\r",i++, ssize, _msg->image().width(), _msg->image().height(), _msg->image().height());
-  printf("%i - %i - %i \n\r",i++, ssize, _msg->image().data().size() );
+
+
+//////  printf("%i - %i - %i \n\r",i++, ssize, _msg->image().data().size() );
+
+
+
 // char filename[256];
  ach_put(&chan_vid_chan, _msg->image().data().c_str() , _msg->image().data().size());
 
