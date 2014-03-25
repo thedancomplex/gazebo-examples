@@ -166,18 +166,17 @@ Install()
 {
 case "$1" in
         'install')
-                sudo mkdir $ROBOT_DIR
-		sudo mkdir $ROBOT_VIEW_DIR
-                sudo chmod -R 777 $ROBOT_VIEW_DIR
-                cp $ROBOT_VIEW_SERVER_FILE $ROBOT_VIEW_DIR
-		cp $ROBOT_VIEW_CLIENT_FILE $ROBOT_VIEW_DIR
-                cp hubo-view $ROBOT_VIEW_DIR
-                ROBOT_VIEW_BIN="$ROBOT_VIEW_DIR/hubo-view"
-                sudo ln -s $ROBOT_VIEW_BIN /usr/bin/hubo-view
+                cd $ROBOT_PATH_MAIN
+                sudo rm -r -f build
+                mkdir build
+                cd build
+                cmake ../; make
 	;;
 	'remove')
-		sudo rm -R $ROBOT_VIEW_DIR
-		sudo rm /usr/bin/hubo-view
+                cd $ROBOT_PATH_MAIN
+                cd build
+		make clean
+		rm -r -f *
 	;;
         *)
                 echo 'Install Options: '
