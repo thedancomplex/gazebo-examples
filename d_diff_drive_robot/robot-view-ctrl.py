@@ -82,8 +82,8 @@ while True:
         raise ach.AchException( v.result_string(status) )
 
 
-    ref.ref[0] =0
-    ref.ref[1] =0
+    ref.ref[0] = -0.5
+    ref.ref[1] = 0.5
     r.put(ref);
 #    print vid
 
