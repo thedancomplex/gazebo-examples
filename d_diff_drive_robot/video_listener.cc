@@ -18,6 +18,10 @@
 #include <gazebo/transport/transport.hh>
 #include <gazebo/msgs/msgs.hh>
 #include <gazebo/gazebo.hh>
+#include <gazebo/common/UpdateInfo.hh>
+#include <gazebo/common/SingletonT.hh>
+#include <gazebo/common/Timer.hh>
+#include <gazebo/util/UtilTypes.hh>
 #include <gazebo/common/common.hh>
 #include <iostream>
 
@@ -48,53 +52,19 @@ int i = 0;
 //void cb(const std::string& _msg)
 void cb(ConstImageStampedPtr &_msg)
 {
-  // Dump the message contents to stdout.
-// char filename[256];
-
-//  gazebo::msgs::ImageStamped _img = _msg; 
-
-//gazebo::common::Image::PixelFormat img = gazebo::common::Image::ConvertPixelFormat (_msg);
-
-//static Image::PixelFormat 	ConvertPixelFormat (const std::string &_format)
-// 	Convert a string to a Image::PixelFormat. 
-
-//std::cout << _msg->DebugString();
   size_t size;
-//  const gazebo::common::Image &_img = gazebo::common::Image.begin();
-// gazebo::msgs::Set( _msg, _img);
-
-
-  //int ssize = sizeof(_msg->image().data());
-//  int ssize = sizeof(img.data);
-///  int ssize = sizeof(_msg.c_str());
-
-
- // printf("%i - %i - w: %i - h: %i - format %i \n\r",i++, ssize, _msg->image().width(), _msg->image().height(), _msg->image().height());
-
-
-//////  printf("%i - %i - %i \n\r",i++, ssize, _msg->image().data().size() );
-
-
-
-// char filename[256];
  ach_put(&chan_vid_chan, _msg->image().data().c_str() , _msg->image().data().size());
 
-  // Save frames
-  /*if (this->save)
-  {
-    snprintf(filename, sizeof(filename), "click-%04d.ppm", this->frameno++);
-    this->SaveFrame(filename);
-  }*/
-  // Save frames
-  /*if (this->save)
-  {
-    snprintf(filename, sizeof(filename), "click-%04d.ppm", this->frameno++);
-    this->SaveFrame(filename);
-  }*/
-
-
-
 }
+
+void cb2(ConstWorldStatisticsPtr &_msg)
+    {
+       gazebo::common::Time simTime  = gazebo::msgs::Convert(_msg->sim_time());
+       //size_t size;
+       double ttime = simTime.Double();
+       //ach_put(&chan_time, _msg->image().data().c_str() , _msg->image().data().size());
+//       printf("%f\n\r",ttime);
+    }
 
 /////////////////////////////////////////////////
 int main(int _argc, char **_argv)
@@ -126,6 +96,15 @@ int main(int _argc, char **_argv)
   // Listen to Gazebo world_stats topic
   gazebo::transport::SubscriberPtr sub = node->Subscribe("/gazebo/default/DiffDrive/d_diff_drive_robot/camera/link/camera/image", cb);
 //  gazebo::transport::SubscriberPtr sub = node->Subscribe("/gazebo/default/DiffDrive/d_diff_drive_robot/camera/link/camera/image", cb);
+
+      gazebo::transport::NodePtr node2(new gazebo::transport::Node());
+      node2->Init();
+      gazebo::transport::SubscriberPtr sub2 = node2->Subscribe("/gazebo/default/world_stats", cb2);
+
+//      gazebo::transport::NodePtr node3(new gazebo::transport::Node());
+//      node3->Init();
+//      gazebo::transport::SubscriberPtr sub3 = node3->Subscribe("/gazebo/default/diagnostics", cb3);
+
 
   printf("%i\n\r",3);
   // Busy wait loop...replace with your own code as needed.
