@@ -66,7 +66,7 @@ void cb(ConstImageStampedPtr &_msg)
 
   //int ssize = sizeof(_msg->image().data());
 //  int ssize = sizeof(img.data);
-  int ssize = sizeof(_msg.c_str());
+///  int ssize = sizeof(_msg.c_str());
 
 
  // printf("%i - %i - w: %i - h: %i - format %i \n\r",i++, ssize, _msg->image().width(), _msg->image().height(), _msg->image().height());
