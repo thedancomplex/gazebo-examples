@@ -77,7 +77,7 @@ while True:
     else:
         raise ach.AchException( v.result_string(status) )
 
-    print vid
+#    print vid
 
     i=i+1
     print i

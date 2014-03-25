@@ -29,7 +29,7 @@
 # Daniel M. Lofaro (dan@danlofaro.com)
 
 export LD_LIBRARY_PATH=/usr/lib:
-ROBOT_PATH_MAIN==$('pwd')
+ROBOT_PATH_MAIN=$('pwd')
 export GAZEBO_PLUGIN_PATH=$ROBOT_PATH_MAIN/build:${GAZEBO_PLUGIN_PATH}
 export GAZEBO_PLUGIN_PATH=$ROBOT_PATH_MAIN:${GAZEBO_PLUGIN_PATH}
 rm ~/.gazebo/models/d_diff_drive_robot
@@ -88,7 +88,7 @@ RunViewClient()
    echo 'Starting hubo-view client process...'
 #   screen -S huboviewclient -d -m python $HUBO_VIEW_CLIENT_DIR
 #   python $HUBO_VIEW_CLIENT_DIR
-   python $ROBOT_VIEW_DIR/$ROBOT_VIEW_CLIENT_FILE
+   python $ROBOT_VIEW_DIR$ROBOT_VIEW_CLIENT_FILE
 #   sleep 5
 #   if ! screen -list | grep -q "huboviewclient"; then
 #        echo 'hubo-view client started: FAIL'
