@@ -38,10 +38,11 @@ import numpy as np
 
 dd = diff_drive
 ref = dd.H_REF()
+tim = dd.H_TIME()
 
 ROBOT_DIFF_DRIVE_CHAN   = 'robot-diff-drive'
 ROBOT_CHAN_VIEW   = 'robot-vid-chan'
-
+ROBOT_TIME_CHAN  = 'robot-time'
 # CV setup 
 cv.NamedWindow("wctrl", cv.CV_WINDOW_AUTOSIZE)
 #capture = cv.CaptureFromCAM(0)
@@ -59,6 +60,8 @@ r = ach.Channel(ROBOT_DIFF_DRIVE_CHAN)
 r.flush()
 v = ach.Channel(ROBOT_CHAN_VIEW)
 v.flush()
+t = ach.Channel(ROBOT_TIME_CHAN)
+t.flush()
 
 i=0
 
@@ -83,13 +86,32 @@ while True:
         raise ach.AchException( v.result_string(status) )
 
 
+    [status, framesize] = t.get(tim, wait=False, last=True)
+    if status == ach.ACH_OK or status == ach.ACH_MISSED_FRAME or status == ach.ACH_STALE_FRAMES:
+        pass
+        #print 'Sim Time = ', tim.sim[0]
+    else:
+        raise ach.AchException( v.result_string(status) )
+
+#-----------------------------------------------------
+#--------[ Do not edit above ]------------------------
+#-----------------------------------------------------
+    # Def:
+    # ref.ref[0] = Right Wheel Velos
+    # ref.ref[1] = Left Wheel Velos
+    # tim.sim[0] = Sim Time
+    # img        = cv image in BGR format
+
     ref.ref[0] = -0.5
     ref.ref[1] = 0.5
-    r.put(ref);
-#    print vid
 
-    i=i+1
-    print i
-    time.sleep(0.1)
+    print 'Sim Time = ', tim.sim[0]
     
+    # Sets reference to robot
+    r.put(ref);
 
+    # Sleeps
+    time.sleep(0.1)   
+#-----------------------------------------------------
+#--------[ Do not edit below ]------------------------
+#-----------------------------------------------------
