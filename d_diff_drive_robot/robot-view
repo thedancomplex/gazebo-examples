@@ -32,6 +32,8 @@ export LD_LIBRARY_PATH=/usr/lib:
 ROBOT_PATH_MAIN==$('pwd')
 export GAZEBO_PLUGIN_PATH=$ROBOT_PATH_MAIN/build:${GAZEBO_PLUGIN_PATH}
 export GAZEBO_PLUGIN_PATH=$ROBOT_PATH_MAIN:${GAZEBO_PLUGIN_PATH}
+ln -s $ROBOT_PATH_MAIN ~/.gazebo/models/d_diff_drive_robot
+
 
 ROBOT_VIEW_VID_CHAN='robot-vid-chan'
 
