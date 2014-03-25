@@ -1,4 +1,0 @@
-gazebo-examples
-===============
-
-Gazebo Examples
