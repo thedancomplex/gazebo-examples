@@ -147,8 +147,8 @@ namespace gazebo
         }
         else{   assert( sizeof(H_ref) == fs ); }
 
-      this->left_wheel_joint_->SetMaxForce(0, 2);
-      this->right_wheel_joint_->SetMaxForce(0, 2);
+      this->left_wheel_joint_->SetMaxForce(0, 7);
+      this->right_wheel_joint_->SetMaxForce(0, 7);
       this->right_wheel_joint_->SetVelocity(0, H_ref[0]);
       this->left_wheel_joint_->SetVelocity(0, H_ref[1]);
 
