@@ -11,7 +11,7 @@
       <uri>model://sun</uri>
     </include>
     
-
+<!--
    <model name ='sphere'>
             <pose>1 0 0 0 0 0</pose>
             <link name ='link'>
@@ -87,7 +87,7 @@
             </link>
     </model>
 
-
+-->
 
 
     <model name="DiffDrive">
