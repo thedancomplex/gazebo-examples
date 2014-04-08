@@ -81,3 +81,6 @@ link_directories(${GAZEBO_LIBRARY_DIRS})
 
 add_library(animate_pose SHARED animate_pose.cc)
 target_link_libraries(animate_pose ${GAZEBO_libraries} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES} ${PROTOBUF_LIBRARIES} pthread ach)
+
+add_library(d_simple_arm_plugin SHARED DSimpleArmPlugin.cc)
+target_link_libraries(d_simple_arm_plugin ${GAZEBO_libraries} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES} ${PROTOBUF_LIBRARIES} pthread ach)
