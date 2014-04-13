@@ -36,8 +36,8 @@ rm ~/.gazebo/models/d_diff_drive_robot
 ln -s $ROBOT_PATH_MAIN ~/.gazebo/models/d_diff_drive_robot
 
 
-ROBOT_VIEW_VID_CHAN_L='robot-vid-chan_L'
-ROBOT_VIEW_VID_CHAN_R='robot-vid-chan_R'
+ROBOT_VIEW_VID_CHAN_L='robot-vid-chan-l'
+ROBOT_VIEW_VID_CHAN_R='robot-vid-chan-r'
 ROBOT_VIEW_VID_CHAN='robot-vid-chan'
 ROBOT_TIME_CHAN='robot-time'
 ROBOT_DIFF_DRIVE_CHAN='robot-diff-drive'

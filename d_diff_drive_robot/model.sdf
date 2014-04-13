@@ -166,7 +166,7 @@
 
    <include>
       <uri>model://camera</uri>
-      <pose>0.0 0.05 0.2 0 0 0</pose>
+      <pose>0.0 0.15 0.2 0 0 0</pose>
       <name>cameraL</name>
     </include>
   <joint name="camera_joint_2_L" type="revolute">
@@ -184,7 +184,7 @@
 
    <include>
       <uri>model://camera</uri>
-      <pose>0.0 -0.15 0.2 0 0 0</pose>
+      <pose>0.0 -0.25 0.2 0 0 0</pose>
       <name>cameraR</name>
     </include>
   <joint name="camera_joint_2_R" type="revolute">
