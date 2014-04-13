@@ -39,7 +39,8 @@
 #include <ach.h>
 
 // ach channels
-ach_channel_t chan_vid_chan;      // hubo-ach
+ach_channel_t chan_vid_chan_L;      // hubo-ach
+ach_channel_t chan_vid_chan_R;      // hubo-ach
 
 
 int i = 0;
@@ -50,10 +51,16 @@ int i = 0;
 //void cb(gazebo::msgs::ImageStamped &_msg)
 //void cb(ConstWorldStatisticsPtr &_msg)
 //void cb(const std::string& _msg)
-void cb(ConstImageStampedPtr &_msg)
+void cbL(ConstImageStampedPtr &_msg)
 {
   size_t size;
- ach_put(&chan_vid_chan, _msg->image().data().c_str() , _msg->image().data().size());
+ ach_put(&chan_vid_chan_L, _msg->image().data().c_str() , _msg->image().data().size());
+
+}
+void cbR(ConstImageStampedPtr &_msg)
+{
+  size_t size;
+ ach_put(&chan_vid_chan_R, _msg->image().data().c_str() , _msg->image().data().size());
 
 }
 
@@ -75,7 +82,9 @@ int main(int _argc, char **_argv)
 
 
         /* open ach channel */
-	int r = ach_open(&chan_vid_chan, "robot-vid-chan" , NULL);
+	int r = ach_open(&chan_vid_chan_L, "robot-vid-chan-l" , NULL);
+	assert( ACH_OK == r );
+	 r = ach_open(&chan_vid_chan_R, "robot-vid-chan-r" , NULL);
 	assert( ACH_OK == r );
 
 
@@ -94,7 +103,8 @@ int main(int _argc, char **_argv)
 
   printf("%i\n\r",2);
   // Listen to Gazebo world_stats topic
-  gazebo::transport::SubscriberPtr sub = node->Subscribe("/gazebo/default/DiffDrive/d_diff_drive_robot/camera/link/camera/image", cb);
+  gazebo::transport::SubscriberPtr subL = node->Subscribe("/gazebo/default/DiffDrive/d_diff_drive_robot/cameraL/link/camera/image", cbL);
+  gazebo::transport::SubscriberPtr subR = node->Subscribe("/gazebo/default/DiffDrive/d_diff_drive_robot/cameraR/link/camera/image", cbR);
 //  gazebo::transport::SubscriberPtr sub = node->Subscribe("/gazebo/default/DiffDrive/d_diff_drive_robot/camera/link/camera/image", cb);
 
       gazebo::transport::NodePtr node2(new gazebo::transport::Node());

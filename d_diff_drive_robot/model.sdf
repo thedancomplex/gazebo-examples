@@ -166,12 +166,11 @@
 
    <include>
       <uri>model://camera</uri>
-      <pose>0.0 -0.05 0.2 0 0 0</pose>
-      <name>camera</name>
-<!--      <plugin name='camera_dump' filename='libcamera_dump.so'/> -->
+      <pose>0.0 0.05 0.2 0 0 0</pose>
+      <name>cameraL</name>
     </include>
-  <joint name="camera_joint_2" type="revolute">
-    <child>camera::link</child>
+  <joint name="camera_joint_2_L" type="revolute">
+    <child>cameraL::link</child>
     <parent>chassis</parent>
     <axis>
       <xyz>0 0 1</xyz>
@@ -183,6 +182,22 @@
   </joint>
 
 
+   <include>
+      <uri>model://camera</uri>
+      <pose>0.0 -0.15 0.2 0 0 0</pose>
+      <name>cameraR</name>
+    </include>
+  <joint name="camera_joint_2_R" type="revolute">
+    <child>cameraR::link</child>
+    <parent>chassis</parent>
+    <axis>
+      <xyz>0 0 1</xyz>
+      <limit>
+        <upper>0</upper>
+        <lower>0</lower>
+      </limit>
+    </axis>
+  </joint>
 
 
 
