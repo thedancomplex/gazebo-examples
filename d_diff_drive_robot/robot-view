@@ -224,6 +224,10 @@ ShowUsage()
 	echo 'remove        : Removes hubo-view'
 	echo 'kill          : Kills and removes hubo-view and ach channels'
 	echo 'make          : makes ach channels'
+        echo '---- post commands (cmd) ---- '
+        echo 'q1            : Load using question 1 world'
+        echo 'q2            : Load using question 2 world'
+        echo 'q3            : Load using question 3 world'
 	echo
 }
 
