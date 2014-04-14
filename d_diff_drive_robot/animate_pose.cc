@@ -20,7 +20,7 @@
 #include <gazebo/common/Time.hh>
 
 int ii = 0;
-int imax = 17000;
+int imax = 60000;
 double sign = 1.0;
 
 namespace gazebo
@@ -48,15 +48,27 @@ namespace gazebo
       gazebo::common::PoseKeyFrame *key;
 //    while(1){
       key = anim->CreateKeyFrame(0);
-      key->SetTranslation(math::Vector3(-sign*5, 4, 0));
-      key->SetRotation(math::Quaternion(0, 0, 0));
+      key->SetTranslation(math::Vector3(-5, 4, 0));
+      key->SetRotation(math::Quaternion(0, 0, 1.5707));
 
       key = anim->CreateKeyFrame(15.0);
-      key->SetTranslation(math::Vector3(sign*5, 4, 0));
+      key->SetTranslation(math::Vector3(5, 4, 0));
       key->SetRotation(math::Quaternion(0, 0, -1.5707));
 
+      key = anim->CreateKeyFrame(30.0);
+      key->SetTranslation(math::Vector3(5,-4, 0));
+      key->SetRotation(math::Quaternion(0, 0, -1.5707));
+
+      key = anim->CreateKeyFrame(45.0);
+      key->SetTranslation(math::Vector3(-5,-4, 0));
+      key->SetRotation(math::Quaternion(0, 0, -1.5707));
+
+      key = anim->CreateKeyFrame(60);
+      key->SetTranslation(math::Vector3(-5, 4, 0));
+      key->SetRotation(math::Quaternion(0, 0, 1.5707));
+
       this->model->SetAnimation(anim);
-      sign = -1.0*sign;
+//      sign = -1.0*sign;
      // usleep(1000000);
       ii++;
      }
