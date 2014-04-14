@@ -115,12 +115,11 @@ while True:
     # ref.ref[0] = Right Wheel Velos
     # ref.ref[1] = Left Wheel Velos
     # tim.sim[0] = Sim Time
-    # img        = cv image in BGR format
-
+    # imgL       = cv image in BGR format (Left Camera)
+    # imgR       = cv image in BGR format (Right Camera)
+    
     ref.ref[0] = -0.5
     ref.ref[1] = 0.5
-    ref.ref[0] = 0
-    ref.ref[1] = 0
 
     print 'Sim Time = ', tim.sim[0]
     
