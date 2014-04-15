@@ -94,35 +94,39 @@
       <include>
         <uri>model://d_diff_drive_robot</uri>
       </include>
-      <pose>0.0 0 0.5 0 0 3.14159</pose>
+      <pose>-2 0 0.5 0 0 1.57</pose>
       <plugin name="model_diff_drive" filename="build/libmodel_diff_drive.so"/>
     </model>   
 
 
-   <model name ='sphere'>
-            <pose>-12.345 0 0 0 0 0</pose>
-            <link name ='link'>
-              <pose>0 4 .5 0 0 0</pose>
-              <collision name ='collision'>
-                <geometry>
-                  <sphere><radius>0.5</radius></sphere>
-                </geometry>
-              </collision>
-              <visual name ='visual'>
-                <geometry>
-                  <sphere><radius>0.5</radius></sphere>
-                </geometry>
+
+        <model name="box_model">
+            <link name="body">
+                <pose>0 0 0.5 0 0 0</pose>
+                <collision name="geom">
+                    <geometry>
+                        <box>
+                            <size>1 1 1</size>
+                        </box>
+                    </geometry>
+                </collision>
+                <visual name="visual1">
+                    <geometry>
+                        <box>
+                            <size>1 1 1</size>
+                        </box>
+                    </geometry>
   <material>
-    <ambient>1 1 0 1</ambient>
-    <diffuse>1 1 0 1</diffuse>
+    <ambient>0 1 0 1</ambient>
+    <diffuse>0 1 0 1</diffuse>
     <specular>0.1 0.1 0.1 1</specular>
     <emissive>0 0 0 0</emissive>
   </material>
-              </visual>
+                </visual>
             </link>
-    </model>
-
-
+            <plugin filename="build/libanimate_pose.so" name="pose_animation" />
+            <static>true</static>
+        </model>
 <!-- Light Source -->
         <light type="directional" name="sun">
             <pose>0 0 10 0 0 0</pose>

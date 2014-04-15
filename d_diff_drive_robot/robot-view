@@ -113,13 +113,13 @@ RunViewServer()
 
    if [[ $FLAG_QUESTION -eq 1 ]]
    then
-     gazebo model_diff_drive_q1.world &
+     gazebo midterm2_qMonCam.world &
    elif [[ $FLAG_QUESTION -eq 2 ]]
    then
-     gazebo model_diff_drive_q2.world &
+     gazebo midterm2-qStereoCam.world &
    elif [[ $FLAG_QUESTION -eq 3 ]]
    then
-     gazebo model_diff_drive_q3.world &
+     gazebo midterm2-qFollow.world &
    else
      gazebo model_diff_drive.world &
    fi
@@ -225,9 +225,9 @@ ShowUsage()
 	echo 'kill          : Kills and removes hubo-view and ach channels'
 	echo 'make          : makes ach channels'
         echo '---- post commands (cmd) ---- '
-        echo 'q1            : Load using question 1 world'
-        echo 'q2            : Load using question 2 world'
-        echo 'q3            : Load using question 3 world'
+        echo 'qMonCam       : Load using question MonCam (Monocular Camera)'
+        echo 'qStereoCam    : Load using question StereoCam (Stereo Camera)'
+        echo 'qFollow       : Load using question 3 world'
 	echo
 }
 
@@ -254,15 +254,15 @@ do
           ROBOT_REMOTE_ADDRESS=${ROBOT_TEMP[$(($ROBOT_I+1))]}
 	  echo "Remote address set: "$ROBOT_REMOTE_ADDRESS
       ;;
-     'q1')
+     'qMonCam')
         FLAG_QUESTION=1
         echo "Mode set to question "$FLAG_QUESTION
      ;;
-     'q2')
+     'qStereoCam')
         FLAG_QUESTION=2
         echo "Mode set to question "$FLAG_QUESTION
      ;;
-     'q3')
+     'qFollow')
         FLAG_QUESTION=3
         echo "Mode set to question "$FLAG_QUESTION
      ;;

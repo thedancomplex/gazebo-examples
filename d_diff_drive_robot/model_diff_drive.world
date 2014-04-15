@@ -99,7 +99,7 @@
     </model>   
 
 
-
+<!--
         <model name="box_model">
             <link name="body">
                 <pose>0 0 0.5 0 0 0</pose>
@@ -127,6 +127,7 @@
             <plugin filename="build/libanimate_pose.so" name="pose_animation" />
             <static>true</static>
         </model>
+-->
 <!-- Light Source -->
         <light type="directional" name="sun">
             <pose>0 0 10 0 0 0</pose>

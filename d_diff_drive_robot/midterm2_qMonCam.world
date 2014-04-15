@@ -1,0 +1,65 @@
+<?xml version="1.0"?> 
+<sdf version="1.4">
+  <world name="default">
+
+    <!-- Ground Plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    
+
+    <model name="DiffDrive">
+      <include>
+        <uri>model://d_diff_drive_robot</uri>
+      </include>
+      <pose>0.0 0 0.5 0 0 3.14159</pose>
+      <plugin name="model_diff_drive" filename="build/libmodel_diff_drive.so"/>
+    </model>   
+
+
+   <model name ='sphere'>
+            <pose>-12.345 0 0 0 0 0</pose>
+            <link name ='link'>
+              <pose>0 4 .5 0 0 0</pose>
+              <collision name ='collision'>
+                <geometry>
+                  <sphere><radius>0.5</radius></sphere>
+                </geometry>
+              </collision>
+              <visual name ='visual'>
+                <geometry>
+                  <sphere><radius>0.5</radius></sphere>
+                </geometry>
+  <material>
+    <ambient>1 1 0 1</ambient>
+    <diffuse>1 1 0 1</diffuse>
+    <specular>0.1 0.1 0.1 1</specular>
+    <emissive>0 0 0 0</emissive>
+  </material>
+              </visual>
+            </link>
+    </model>
+
+
+<!-- Light Source -->
+        <light type="directional" name="sun">
+            <pose>0 0 10 0 0 0</pose>
+            <diffuse>1.0 1.0 1.0 1</diffuse>
+            <specular>0 0 0 1</specular>
+            <attenuation>
+                <range>20</range>
+                <linear>0.01</linear>
+                <constant>0.8</constant>
+                <quadratic>0.0</quadratic>
+            </attenuation>
+            <direction>0.0 0.2 -8.0</direction>
+            <cast_shadows>true</cast_shadows>
+        </light>
+
+     
+  </world>
+</sdf>
