@@ -113,7 +113,7 @@ RunViewServer()
 
    if [[ $FLAG_QUESTION -eq 1 ]]
    then
-     gazebo midterm2_qMonCam.world &
+     gazebo midterm2-qMonCam.world &
    elif [[ $FLAG_QUESTION -eq 2 ]]
    then
      gazebo midterm2-qStereoCam.world &

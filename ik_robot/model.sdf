@@ -1,0 +1,46 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+
+
+
+
+
+
+
+<model name="ik_robot">
+    <include>
+      <uri>model://robot_arm</uri>
+      <pose>0.0 0 1.0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://arm_base</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <joint name="fixed to ground" type="revolute">
+      <parent>ground_plane::link</parent>
+      <child>robot_arm_base::body</child>
+       <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+        </limit>
+        <xyz>0 0 1</xyz>
+        </axis>
+    </joint>
+
+    <joint name="shoulder_joint" type="revolute">
+      <parent>robot_arm_base::body</parent>
+      <child>robot_arm::shoulder_rotator</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+  </model>
+
+</sdf>

@@ -24,8 +24,7 @@
 
         <model name="box_model">
             <link name="body">
-<!--                <pose>-5.123 .5 0.5 0 0 0</pose>
--->                <pose>-1.42 .2 0.5 0 0 0</pose>
+                <pose>-5.123 .5 0.5 0 0 0</pose>
                 <collision name="geom">
                     <geometry>
                         <box>

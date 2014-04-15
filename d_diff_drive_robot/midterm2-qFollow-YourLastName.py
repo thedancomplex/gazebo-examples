@@ -122,6 +122,8 @@ while True:
     ref.ref[1] = 0.5
 
 
+    # Commands Robot
+    r.put(ref)
     # Sleeps
     time.sleep(0.1)   
 #-----------------------------------------------------
